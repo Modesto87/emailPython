@@ -2,30 +2,30 @@ import smtplib
 from email.message import EmailMessage
 import os
 
-# Configuração do email
+# Configuration du email
 email_de = '[email]'
 email_para = 'luiscmmodesto@gmail.com'
-assunto = 'Assunto do Email'
-corpo = 'Este é o corpo do email.'
+assunto = 'sujet du email'
+corpo = 'text du email'
 
-# Criar a mensagem
+# Creer une message
 msg = EmailMessage()
 msg['From'] = email_de
 msg['To'] = email_para
 msg['Subject'] = assunto
 msg.set_content(corpo)
 
-# Configuração do servidor SMTP
+# serveur SMTP
 smtp_server = 'smtp.infomaniak.com'
 porta = 587
 senha = '[password]'
 
-# Enviar o email
+# Envoyer
 try:
     with smtplib.SMTP(smtp_server, porta) as server:
-        server.starttls()  # Inicia a comunicação criptografada
+        server.starttls()
         server.login(email_de, senha)
         server.send_message(msg)
-    print('Email enviado com sucesso!')
+    print('Email envoyé')
 except Exception as e:
-    print(f'Ocorreu um erro ao enviar o email: {e}')
+    print(f'il y a un probleme pour envoyer: {e}')
